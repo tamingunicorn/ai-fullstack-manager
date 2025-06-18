@@ -1,0 +1,215 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# AI Context Management Rules (Frontend + Playwright Automation)
+
+## STARTUP PROTOCOL
+
+### First Check: Context System Status
+
+BEFORE doing any work, check if `.context/` directory exists and contains core files:
+
+- `.context/core/project-brief.md`
+- `.context/core/current-state.md`
+- `.context/core/architecture.md`
+- `.context/core/tech-stack.md`
+
+### If Context System Missing: BOOTSTRAP MODE
+
+When `.context/` directory doesn't exist or is incomplete:
+
+1. **STOP all other work immediately**
+2. **Announce**: "Context system not found. Entering Bootstrap Mode to create essential documentation."
+3. **Create MINIMAL initial context** (max 200 lines total)
+4. **Create expansion plan**: List what additional context could be useful
+5. **Ask user to review** and approve before proceeding
+
+### If Context System Exists: NORMAL MODE
+
+Read these files in this order:
+
+1. `.context/core/project-brief.md`
+2. `.context/core/current-state.md`
+3. `.context/core/architecture.md`
+4. `.context/core/tech-stack.md`
+5. `.context/operational/playwright-automation.md`
+
+---
+
+## PLAYWRIGHT AUTOMATION PROTOCOL
+
+### MANDATORY AUTO-TESTING
+
+After EVERY code change, automatically execute:
+
+1. **Navigate to dev server**: `mcp_playwright_playwright_navigate` to localhost:3000
+2. **Capture baseline**: `mcp_playwright_playwright_screenshot` for comparison
+3. **Check console**: `mcp_playwright_playwright_console_logs` for errors
+4. **Test interactions**: Click, fill, navigate based on changes made
+5. **Validate responsive**: Test mobile/desktop viewports
+
+### AUTO-FIX WORKFLOW
+
+When errors detected:
+
+1. **Capture error state**: Screenshot + console logs
+2. **Analyze patterns**: Common import/styling/routing issues
+3. **Apply fixes automatically**:
+   - Missing imports → Add required imports
+   - Styling issues → Fix Tailwind classes
+   - Route errors → Correct navigation
+   - Component errors → Fix props/types
+4. **Re-test immediately**: Validate fixes work
+5. **Document fixes**: Log in `.context/session-logs/auto-fixes.md`
+
+### TESTING TRIGGERS
+
+Auto-test after changes to:
+
+- Any file in `src/app/`, `src/components/`, `src/lib/`
+- Component creation/modification
+- Page route changes
+- API endpoint updates
+- Styling/theme changes
+- Authentication flows
+
+---
+
+## ENHANCED EXECUTION MODES
+
+### PLAN + TEST MODE (Default)
+
+1. Load context files
+2. Plan UI/component changes
+3. **Execute changes**
+4. **AUTO-TEST with Playwright**
+5. **AUTO-FIX any issues**
+6. **Re-test until success**
+7. Update context documentation
+
+### CONTINUOUS VALIDATION MODE
+
+- Every file save triggers Playwright validation
+- Immediate feedback on UI/UX issues
+- Self-healing code that fixes common problems
+- Visual regression detection
+
+---
+
+## STORAGE STRUCTURE
+
+```
+.context/
+├── core/                    # Essential project info
+├── operational/             # Development guidelines
+│   └── playwright-automation.md
+├── reference/               # Detailed documentation
+├── testing/                 # NEW: Playwright assets
+│   ├── screenshots/
+│   │   ├── baseline/
+│   │   ├── current/
+│   │   └── errors/
+│   ├── test-results/
+│   └── generated-tests/
+└── session-logs/
+    ├── auto-fixes.md        # NEW: Auto-fix log
+    └── test-reports.md      # NEW: Test execution log
+```
+
+---
+
+## AUTO-FIX STRATEGIES
+
+### Critical Issues (Fix immediately):
+
+- Build errors preventing page load
+- Missing component imports
+- Broken authentication redirects
+- 404 routing errors
+
+### UI Issues (Fix with validation):
+
+- Layout overflow/positioning
+- Missing responsive breakpoints
+- Color contrast violations
+- Accessibility issues
+
+### Performance Issues (Log and suggest):
+
+- Slow page load times
+- Large bundle sizes
+- Unnecessary re-renders
+
+---
+
+## COMMUNICATION PROTOCOL
+
+Each response must confirm:
+
+- Files read
+- User goal
+- Planned UI/UX output
+- **Playwright test results**
+- **Auto-fixes applied**
+
+Example: "I've read the core context files. This is a Next.js app with Tailwind + shadcn. I'll create the dashboard component, then auto-test with Playwright. If any issues are found, I'll fix them automatically and re-test until success."
+
+---
+
+## SUCCESS CRITERIA
+
+### Code Change Complete When:
+
+- ✅ Code implemented
+- ✅ Playwright tests pass
+- ✅ No console errors
+- ✅ Responsive design works
+- ✅ Visual consistency maintained
+- ✅ Auto-fixes documented
+
+### Never Consider Task Done Until:
+
+- All Playwright validations pass
+- Screenshots show correct rendering
+- Console is error-free
+- Mobile/desktop both work
+
+---
+
+## ERROR HANDLING
+
+### Playwright Test Failures:
+
+1. Capture error screenshot
+2. Extract console errors
+3. Apply common fixes automatically
+4. Re-test immediately
+5. If still failing, document and suggest manual review
+
+### Auto-Fix Failures:
+
+1. Log the attempted fix
+2. Capture current state
+3. Provide detailed error analysis
+4. Suggest manual intervention steps
+
+---
+
+## CONTINUOUS IMPROVEMENT
+
+### Auto-Learning:
+
+- Track common error patterns
+- Improve auto-fix strategies
+- Update testing protocols
+- Enhance visual validation
+
+### Context Updates:
+
+- Document new component patterns
+- Update UI standards based on test results
+- Refine auto-fix strategies
+- Archive successful test patterns

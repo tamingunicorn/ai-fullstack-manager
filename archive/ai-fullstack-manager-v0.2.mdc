@@ -1,0 +1,306 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# AI Context Management Rules (Unified Frontend + Backend) v0.2
+
+## RECOMMENDED FOLDER STRUCTURE
+
+```
+ai-context-manager/                    # Root project folder
+├── .cursor/
+│   └── rules/                        # Rules directory
+│       └── ai-fullstack-manager-v0.2.mdc  # This unified rules file
+├── .context/                         # Shared context system
+│   ├── core/                         # Project-wide essentials
+│   │   ├── project-brief.md
+│   │   ├── current-state.md
+│   │   ├── architecture.md           # Full-stack architecture
+│   │   └── tech-stack.md             # Both FE & BE technologies
+│   ├── operational-fe/               # Frontend-specific operations
+│   │   ├── coding-standards.md       # FE coding standards
+│   │   ├── playwright-automation.md  # Browser testing automation
+│   │   ├── component-patterns.md     # React/Next.js patterns
+│   │   └── ui-guidelines.md            # Design system guidelines
+│   ├── operational-be/               # Backend-specific operations
+│   │   ├── coding-standards.md       # BE coding standards
+│   │   ├── api-development.md        # FastAPI development patterns
+│   │   ├── database-patterns.md      # SQLAlchemy & migration patterns
+│   │   └── deployment-guide.md       # AWS deployment procedures
+│   ├── shared/                       # Cross-project patterns
+│   │   ├── integration-patterns.md   # FE-BE communication patterns
+│   │   ├── authentication-flows.md   # Clerk auth integration
+│   │   ├── error-handling.md         # Unified error strategies
+│   │   └── testing-strategies.md     # Full-stack testing approaches
+│   ├── reference/
+│   │   ├── api-guide.md              # Complete API documentation
+│   │   ├── component-library.md      # FE component reference
+│   │   ├── database-schema.md        # BE database reference
+│   │   ├── troubleshooting.md        # Common issues & solutions
+│   │   └── dependencies.md           # Package management
+│   ├── testing/                      # Shared testing assets
+│   │   ├── screenshots/              # Playwright screenshots
+│   │   ├── test-results/             # Test execution results
+│   │   ├── generated-tests/          # Auto-generated test files
+│   │   └── api-tests/                # Backend API test results
+│   └── session-logs/
+│       ├── decisions.md              # Architecture decisions
+│       ├── insights.md               # Development insights
+│       ├── auto-fixes.md             # Automated fixes applied
+│       └── test-reports.md           # Testing summaries
+├── frontend/                         # Next.js app
+│   ├── src/
+│   ├── package.json
+│   ├── next.config.js
+│   └── ...
+├── backend/                          # FastAPI Python API
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── routers/
+│   │   ├── models/
+│   │   └── dependencies/
+│   ├── requirements.txt
+│   ├── pyproject.toml
+│   └── ...
+├── shared/                           # Shared utilities/types
+│   ├── types/
+│   ├── utils/
+│   └── constants/
+├── docker-compose.yml                # For local development
+├── package.json                      # Root package.json for scripts
+└── README.md
+```
+
+## RULE NUMBER ONE
+### Coding and documenting rule
+- Be concise, always
+
+## STARTUP PROTOCOL
+
+### First Check: Context System Status
+BEFORE doing any work, check if `.context/` directory exists and contains core files:
+- `.context/core/project-brief.md`
+- `.context/core/current-state.md` 
+- `.context/core/architecture.md` (covers both FE & BE)
+- `.context/core/tech-stack.md` (covers both stacks)
+
+### Context System Detection
+If context system is missing or incomplete, enter **BOOTSTRAP MODE**.
+If context system exists, enter **NORMAL MODE** and read core files in order.
+
+### PROJECT TYPE DETECTION
+Automatically detect the working context based on file paths:
+- Files in `frontend/` → Frontend context
+- Files in `backend/` → Backend context  
+- Files in `shared/` → Full-stack context
+- Files in root → Architecture/deployment context
+
+### Working rule
+- SUPER IMPORTANT: when you code backend. Do coding under /backend directory
+- SUPER IMPORTANT: when you code frontend. Do coding under /frontend directory
+- Before you do CLI command, check current PWD to make sure where your working
+
+## EXECUTION MODES
+
+### FRONTEND MODE
+**Triggered when working in `frontend/` directory**
+
+**Additional Context Loading:**
+- `.context/operational-fe/coding-standards.md`
+- `.context/operational-fe/playwright-automation.md`
+- `.context/operational-fe/component-patterns.md`
+- `.context/operational-fe/ui-guidelines.md`
+- `.context/shared/integration-patterns.md`
+- `.context/reference/component-library.md`
+
+**Auto-Testing Protocol:**
+After EVERY frontend change:
+1. Navigate to dev server: `localhost:3000`
+2. Capture baseline screenshot
+3. Check console for errors
+4. Test interactions based on changes
+5. Validate responsive design
+
+**Auto-Fix Triggers:**
+- Missing imports → Add required imports
+- Styling issues → Fix Tailwind classes
+- Route errors → Correct navigation
+- Component errors → Fix props/types
+
+### BACKEND MODE
+**Triggered when working in `backend/` directory**
+
+**Additional Context Loading:**
+- `.context/operational-be/coding-standards.md`
+- `.context/operational-be/api-development.md`
+- `.context/operational-be/database-patterns.md`
+- `.context/operational-be/deployment-guide.md`
+- `.context/shared/integration-patterns.md`
+- `.context/reference/database-schema.md`
+- `.context/reference/api-guide.md`
+
+**API Testing Protocol:**
+After EVERY backend change:
+1. Validate FastAPI endpoints (check `/docs` for Swagger UI)
+2. Test with automatic OpenAPI schema validation
+3. Verify Pydantic model validation
+4. Check database connections (if using SQLAlchemy/Tortoise)
+5. Test authentication/authorization middleware
+6. Validate response schemas match Pydantic models
+
+### FULL-STACK MODE
+**Triggered when working across both directories**
+
+**Additional Context Loading:**
+- All operational-fe files
+- All operational-be files  
+- All shared pattern files
+- Complete reference documentation
+
+**Comprehensive Testing:**
+1. Backend API validation
+2. Frontend integration testing
+3. End-to-end user flows
+4. Data flow validation from BE to FE
+
+## SPECIAL COMMANDS
+
+### /bootstrap or "bootstrap context"
+Creates complete context system for monorepo:
+1. Analyze both frontend and backend codebases
+2. Create unified architecture documentation
+3. Generate operational guidelines for both stacks
+4. Set up testing infrastructure for both sides
+
+### /update-context or "update memory bank"
+Updates context considering both projects:
+1. Review all existing context files
+2. Compare with current state of both FE & BE
+3. Update architectural decisions
+4. Sync API changes with frontend integration
+
+### /test-integration or "test full stack"
+Runs comprehensive testing:
+1. Backend API tests
+2. Frontend component tests
+3. Integration tests between FE & BE
+4. End-to-end user journey tests
+
+## CROSS-PROJECT PROTOCOLS
+
+### API Contract Changes
+When modifying backend APIs:
+1. Update `.context/reference/api-guide.md`
+2. Update `.context/shared/integration-patterns.md`
+3. Check frontend integration points
+4. Update shared types in `shared/types/`
+5. Test frontend components that consume the API
+6. Document breaking changes
+
+### Shared Resource Updates
+When modifying `shared/` directory:
+1. Test impact on both frontend and backend
+2. Update import statements across projects
+3. Verify type consistency
+4. Update documentation for shared utilities
+
+### Database Schema Changes
+When modifying database:
+1. Update `.context/reference/database-schema.md`
+2. Update `.context/operational-be/database-patterns.md`
+3. Check API endpoints that use modified tables
+4. Test frontend components that display the data
+5. Create/update migration scripts
+6. Update API documentation
+
+## CONTEXT STRUCTURE ADAPTATIONS
+
+### Separated Operational Guidelines
+
+**Frontend Operations** (`.context/operational-fe/`):
+- `coding-standards.md` → Next.js, TypeScript, Tailwind patterns
+- `playwright-automation.md` → Browser testing and automation
+- `component-patterns.md` → React component best practices
+- `ui-guidelines.md` → Design system and accessibility
+
+**Backend Operations** (`.context/operational-be/`):
+- `coding-standards.md` → FastAPI, Python, async patterns
+- `api-development.md` → REST API design and documentation
+- `database-patterns.md` → SQLAlchemy, migrations, data modeling
+- `deployment-guide.md` → AWS deployment and infrastructure
+
+**Shared Patterns** (`.context/shared/`):
+- `integration-patterns.md` → FE-BE communication protocols
+- `authentication-flows.md` → Clerk auth implementation
+- `error-handling.md` → Unified error strategies
+- `testing-strategies.md` → Full-stack testing approaches
+
+### Enhanced Tech Stack Documentation
+`.context/core/tech-stack.md` should cover:
+- Frontend: Next.js, Tailwind, component libraries
+- Backend: Python, FastAPI, Pydantic, SQLAlchemy/Tortoise ORM
+- Shared: TypeScript (FE), Python types (BE), testing frameworks
+- DevOps: Docker, deployment platforms, Python package management
+
+## SUCCESS CRITERIA
+
+### Frontend Changes Complete When:
+- ✅ Code implemented
+- ✅ Playwright tests pass
+- ✅ No console errors
+- ✅ Responsive design works
+- ✅ API integration tested (if applicable)
+
+### Backend Changes Complete When:  
+- ✅ Code implemented
+- ✅ FastAPI automatic validation passes
+- ✅ Pydantic models validate correctly
+- ✅ Database operations validated
+- ✅ Authentication/authorization works
+- ✅ OpenAPI schema generates properly
+- ✅ Frontend integration tested (if applicable)
+
+### Full-Stack Changes Complete When:
+- ✅ Both frontend and backend criteria met
+- ✅ End-to-end user flows work
+- ✅ Data consistency maintained
+- ✅ No breaking changes introduced
+
+## COMMUNICATION PROTOCOL
+
+Start every response by confirming:
+- Which project(s) you're working in (frontend/backend/full-stack)
+- Context files you've read
+- Understanding of current priorities
+- Cross-project impact assessment
+
+Example: "Working in **FULL-STACK MODE**. I've read core context files and see this affects both the backend API (user management) and frontend dashboard. Current priority is user authentication. I'll update the backend endpoint first, then integrate with the frontend login component, and test the complete flow."
+
+## ERROR HANDLING
+
+### Cross-Project Errors:
+1. Identify which side caused the issue (FE vs BE)
+2. Fix the root cause first
+3. Update integration points
+4. Test complete user flow
+5. Document lessons learned in appropriate context files
+
+### API Integration Failures:
+1. Validate backend endpoint independently
+2. Check frontend API client setup
+3. Verify shared type definitions
+4. Test with real data flow
+5. Update API documentation
+
+## KNOWLEDGE TRANSFER PROTOCOL
+
+After completing ANY significant work:
+
+1. **Update unified current state**
+2. **Document cross-project patterns**
+3. **Update API contracts if changed**
+4. **Log integration insights**
+5. **Update deployment considerations**
+
+Remember: You're now managing a cohesive full-stack application. Always consider the impact of changes on both sides and maintain consistency across the entire system.

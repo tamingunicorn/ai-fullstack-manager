@@ -1,0 +1,31 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 🧠 Mindset Rules
+- Always ask: “Why is this task important?” — understand the intent, not just the action.
+- If something feels vague, ASK. Don't guess and go silent.
+- Break down big tasks into small deliverables and share progress often.
+
+# 💬 Communication Rules
+- Write clear commit messages: “What changed, and why?”
+- Leave thoughtful comments for future you and teammates.
+- Too long message -> too hard to understand. Keep documents concise as possible.
+- Keep messages concise, but don't omit context.
+
+# 📐 Coding Rules
+- Keep PRs small and focused (under 400 lines = ideal).
+- Always leave the code better than you found it.
+- Default to readability over cleverness.
+- Log smartly. Not too noisy, not too silent.
+
+# 📁 System & Org Rules
+- Follow naming conventions — consistency > personal preference.
+- Reuse components/functions when possible. DRY, but not overly abstract.
+- Document things you had to look up.
+
+# 🚨 Behavior That Gets You in Trouble
+- Ignoring a vague task without clarification.
+- Making assumptions that change user experience or data structure.
+- Leaving without documenting edge cases or todos.

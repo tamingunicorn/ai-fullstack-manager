@@ -1,0 +1,210 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# AI Context Management Rules
+
+## STARTUP PROTOCOL
+
+### First Check: Context System Status
+BEFORE doing any work, check if `.context/` directory exists and contains core files:
+- `.context/core/project-brief.md`
+- `.context/core/current-state.md` 
+- `.context/core/architecture.md`
+- `.context/core/tech-stack.md`
+
+### If Context System Missing: BOOTSTRAP MODE
+When `.context/` directory doesn't exist or is incomplete:
+
+1. **STOP all other work immediately**
+2. **Announce**: "Context system not found. Entering Bootstrap Mode to create essential documentation."
+3. **Create MINIMAL initial context** (max 200 lines total):
+   - `project-brief.md` (50 lines max): What, why, who
+   - `current-state.md` (30 lines max): Status, priorities, blockers
+   - `architecture.md` (70 lines max): Key components, data flow
+   - `tech-stack.md` (30 lines max): Languages, frameworks, versions
+   - `quick-patterns.md` (20 lines max): Top 5 code patterns to follow
+4. **Create expansion plan**: List what additional context could be useful
+5. **Ask user to review** and approve before proceeding
+
+### CONTEXT LENGTH LIMITS
+Each core file should follow these limits:
+- **Core files**: 30-70 lines each (except architecture max 100)
+- **Operational files**: 50-100 lines each  
+- **Reference files**: Can be longer but must have clear sections
+- **Session logs**: Archive when over 200 lines
+Why each files should be short?
+.context is a knowledge-base your predecessor AI should use.
+Too long files makes them confused.
+
+### PROGRESSIVE CONTEXT BUILDING
+Instead of creating everything at once:
+1. Start with minimal viable context
+2. Add details incrementally as patterns emerge
+3. Archive detailed information to reference files
+4. Keep core files focused on "need to know" information
+
+### If Context System Exists: NORMAL MODE
+Read these files in this exact order:
+1. `.context/core/project-brief.md` - Project foundation
+2. `.context/core/current-state.md` - What's happening now
+3. `.context/core/architecture.md` - System design
+4. `.context/core/tech-stack.md` - Technologies used
+
+After reading core files, confirm you understand:
+- What this project does
+- Current priorities
+- Key architectural decisions
+- Technologies in use
+
+## SPECIAL COMMANDS
+
+### /bootstrap or "bootstrap context"
+When user explicitly requests context system creation:
+1. Perform comprehensive codebase analysis
+2. Create complete .context/ structure with all files
+3. Generate initial documentation based on code analysis
+4. Present summary of what was created
+5. Ask user to review and refine the generated context
+
+### /update-context or "update memory bank"
+When user requests context updates:
+1. Review ALL existing context files
+2. Compare with current codebase state
+3. Update outdated information
+4. Add missing patterns or insights
+5. Report what was updated and why
+
+## TASK-SPECIFIC CONTEXT LOADING
+Based on your task, also read:
+
+**For new features:**
+- `.context/operational/patterns.md`
+- `.context/operational/business-rules.md`
+- `.context/session-logs/insights.md`
+
+**For bug fixes:**
+- `.context/reference/troubleshooting.md`
+- `.context/operational/workflows.md`
+
+**For refactoring:**
+- `.context/operational/patterns.md`
+- `.context/reference/dependencies.md`
+
+**For API/integration work:**
+- `.context/reference/api-guide.md`
+- `.context/operational/business-rules.md`
+
+## CODING STANDARDS
+Always follow guidelines in `.context/operational/coding-standards.md` including:
+- Naming conventions
+- File organization patterns
+- Code style preferences
+- Comment requirements
+
+## KNOWLEDGE TRANSFER PROTOCOL
+After completing ANY significant work, you MUST:
+
+1. **Update current state:**
+   - Add what you changed to `.context/core/current-state.md`
+   - Note any new patterns or insights discovered
+
+2. **Document patterns:**
+   - If you created reusable code, add it to `.context/reference/component-library.md`
+   - If you discovered a new pattern, add it to `.context/operational/patterns.md`
+
+3. **Share insights:**
+   - Add any discoveries to `.context/session-logs/insights.md`
+   - Document decision reasoning in `.context/session-logs/decisions.md`
+
+## COMMUNICATION PROTOCOL
+Start every response by confirming:
+- Which context files you've read
+- Your understanding of current priorities
+- How your task fits into the broader project
+
+Example:
+"I've read the core context files and understand this is a [project type] focused on [main goal]. Current priority is [current focus]. For this [task type], I also reviewed [specific files]. Here's my approach..."
+
+## CONTEXT VALIDATION
+If you find context files are:
+- Missing information you need
+- Contradicting the actual codebase
+- Outdated compared to current code
+
+IMMEDIATELY flag this and suggest updates before proceeding.
+
+## ARCHITECTURE PRESERVATION
+Before making changes that might affect:
+- Database schema
+- API contracts
+- Core business logic
+- System integrations
+
+Reference `.context/core/architecture.md` and confirm your changes align with established patterns.
+
+## ERROR HANDLING
+If you encounter issues not covered in context files:
+1. Document the issue in `.context/reference/troubleshooting.md`
+2. Note the solution you implemented
+3. Update relevant context files with lessons learned
+
+## EXECUTION MODES
+
+### PLAN MODE (Default for Complex Tasks)
+Automatically enter Plan Mode for:
+- New features or major changes
+- Tasks affecting multiple components
+- Architecture modifications
+- When user explicitly requests planning
+
+**Plan Mode Protocol:**
+1. Load all relevant context files
+2. Analyze existing codebase to understand impact scope
+3. Ask 4-6 clarifying questions about:
+   - Requirements edge cases
+   - Integration points
+   - Performance considerations
+   - User experience implications
+   - Testing requirements
+   - Deployment considerations
+4. Wait for answers, then create comprehensive implementation plan
+5. Present plan with phases, risks, and alternatives
+6. Get explicit approval before proceeding to Act Mode
+
+**Plan Documentation:**
+- Update `.context/session-logs/decisions.md` with planning rationale
+- Note any new patterns or constraints discovered
+- Document alternative approaches considered
+
+### ACT MODE
+Enter Act Mode when:
+- Plan has been approved
+- Task is simple/routine (bug fixes, minor updates)
+- User explicitly requests immediate action
+
+**Act Mode Protocol:**
+1. Confirm context understanding
+2. Execute according to approved plan or established patterns
+3. Update context files as work progresses
+4. Document any deviations from plan and reasoning
+
+### MODE SWITCHING
+- Always announce which mode you're operating in
+- In Plan Mode, don't write code until plan is approved
+- In Act Mode, focus on execution efficiency
+- Can switch modes mid-task if complexity increases
+
+Example responses:
+- "Entering Plan Mode for this feature. Let me analyze the impact scope..."
+- "This looks like a straightforward fix. Acting directly based on established patterns..."
+
+## CONTINUOUS IMPROVEMENT
+Regularly suggest improvements to the context system:
+- Missing documentation that would help future AI agents
+- Better organization of existing information
+- New context files that would be valuable
+- Outdated information that should be updated or removed
+
+Remember: You are not just using this context system - you are actively improving it for the next AI agent who will work on this project.
